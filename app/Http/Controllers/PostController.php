@@ -172,7 +172,7 @@ class PostController extends Controller
         }
 
 
-        return response(['message' => 'success', 'path' => 'storage/odocuments']);
+        return response(['message' => 'successfully uploaded file(s)'], 200);
     }
 
 }

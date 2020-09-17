@@ -15,9 +15,9 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::all();
+        $posts = Post::offset($request->item)->limit(10)->get();
 
         return PostResource::collection($posts);
     }

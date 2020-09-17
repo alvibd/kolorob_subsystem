@@ -97,23 +97,25 @@ class PostController extends Controller
                 'required',
                 'file',
                 'mimetypes:image/jpeg,image/png,image/gif,application/mp4,video/x-msvideo,video/x-matroska,application/pdf',
-                function($attribute, $value, $fail){
+                // function($attribute, $value, $fail){
 
-                    $file_type = request()->get('file_type');
+                //     dd($value);
 
-                    if($file_type == '.pdf' && explode('.', $value->name)[1] != 'pdf')
-                    {
-                        $fail($attribute.' does not match the file type.');
-                    }
-                    elseif($file_type == 'image/*' && !in_array(explode('.', $value->name)[1], ['jpeg','jpg','png','gif']))
-                    {
-                        $fail($attribute.' does not match the file type.');
-                    }
-                    elseif($file_type == 'video/*' && !in_array(explode('.', $value->name)[1], ['mp4','avi','mkv']))
-                    {
-                        $fail($attribute.' does not match the file type.');
-                    }
-                }
+                //     $file_type = request()->get('file_type');
+
+                //     if($file_type == '.pdf' && explode('.', $value->name)[1] != 'pdf')
+                //     {
+                //         $fail($attribute.' does not match the file type.');
+                //     }
+                //     elseif($file_type == 'image/*' && !in_array(explode('.', $value->name)[1], ['jpeg','jpg','png','gif']))
+                //     {
+                //         $fail($attribute.' does not match the file type.');
+                //     }
+                //     elseif($file_type == 'video/*' && !in_array(explode('.', $value->name)[1], ['mp4','avi','mkv']))
+                //     {
+                //         $fail($attribute.' does not match the file type.');
+                //     }
+                // }
             ]
         ]);
 

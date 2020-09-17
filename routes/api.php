@@ -22,6 +22,7 @@ Route::middleware('api')->group(function(){
     Route::post('login', 'AuthController@login');
     Route::post('refresh', 'AuthController@refresh');
     Route::get('contents', 'PostController@index');
+    Route::get('content/{post}', 'PostController@show');
 });
 
 Route::middleware('auth:api')->group(function(){

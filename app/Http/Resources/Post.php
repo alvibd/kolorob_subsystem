@@ -15,11 +15,14 @@ class Post extends JsonResource
      */
     public function toArray($request)
     {
+        // dump($request->path());
         return [
+            'id' => $this->id,
             'caption' => $this->caption,
             'description' => $this->description,
             'view_count' => $this->view_count,
-            'post_contents' => PostContentResource::collection($this->postContents)
+            'thumbnail' => new PostContentResource($this->postContents->first()),
+            'post_contents' => PostContentResource::collection($this->whenLoaded('postContents'))
         ];
     }
 }

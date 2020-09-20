@@ -158,26 +158,26 @@ class ContentTest extends TestCase
     /**
      * @test
      */
-    public function validate_file_type_matches_file()
-    {
-        $post = factory(Post::class)->create();
+    // public function validate_file_type_matches_file()
+    // {
+    //     $post = factory(Post::class)->create();
 
-        $token = JWTAuth::fromUser($this->user);
+    //     $token = JWTAuth::fromUser($this->user);
 
-        Storage::fake('posts');
+    //     Storage::fake('posts');
 
-        $file = UploadedFile::fake()->image('avatar.jpg');
+    //     $file = UploadedFile::fake()->image('avatar.jpg');
 
-        $response = $this->withHeaders(['Authorization' => "Bearer {$token}"])
-                        ->postJson('/api/create_post/'.$post->id.'/upload', [
-                            'file_type' => '.pdf',
-                            'files' => [$file],
-                        ]);
+    //     $response = $this->withHeaders(['Authorization' => "Bearer {$token}"])
+    //                     ->postJson('/api/create_post/'.$post->id.'/upload', [
+    //                         'file_type' => '.pdf',
+    //                         'files' => [$file],
+    //                     ]);
 
-        // $response->dump();
+    //     // $response->dump();
 
-        $response->assertJsonValidationErrors(['files.0']);
-    }
+    //     $response->assertJsonValidationErrors(['files.0']);
+    // }
 
     /**
      * @test

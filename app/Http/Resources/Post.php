@@ -21,8 +21,8 @@ class Post extends JsonResource
             'caption' => $this->caption,
             'description' => $this->description,
             'view_count' => $this->view_count,
+            'post_contents' => PostContentResource::collection($this->whenLoaded('postContents')),
             'thumbnail' => new PostContentResource($this->postContents->first()),
-            'post_contents' => PostContentResource::collection($this->whenLoaded('postContents'))
         ];
     }
 }

@@ -21,6 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::middleware('api')->group(function(){
     Route::post('login', 'AuthController@login');
     Route::post('refresh', 'AuthController@refresh');
+    Route::get('contents', 'PostController@index');
     Route::post('contents', 'PostController@index');
     Route::get('content/{post}', 'PostController@show');
 });

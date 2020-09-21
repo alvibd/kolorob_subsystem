@@ -17,6 +17,12 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
+        if($request->isMethod('GET'))
+        {
+            $posts = Post::offset($request->item)->paginate(10);
+            return PostResource::collection($posts);
+        }
+        
         $posts = Post::offset($request->item)->limit(10)->get();
 
         return PostResource::collection($posts);

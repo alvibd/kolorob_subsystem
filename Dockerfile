@@ -2,12 +2,14 @@ FROM php:7.4-fpm
 
 # Copy composer.lock and composer.json
 COPY composer.lock composer.json /var/www/
+COPY package*.json /var/www/
 
 # Set working directory
 WORKDIR /var/www
 
 # Install dependencies
-RUN apt update && apt install -y \
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
+    apt update && apt install -y \
     build-essential \
     libpng-dev \
     libpq-dev \
@@ -20,7 +22,9 @@ RUN apt update && apt install -y \
     vim \
     unzip \
     git \
-    curl
+    nodejs \
+    curl &&\
+    npm install -g npm
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*

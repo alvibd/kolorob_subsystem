@@ -1,4 +1,4 @@
-version: '3'
+version: '3.7'
 services:
 
   #PHP Service
@@ -19,7 +19,7 @@ services:
       - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
     networks:
       - app-network
-    
+
 
   #Nginx Service
   webserver:
@@ -28,7 +28,7 @@ services:
     restart: unless-stopped
     tty: true
     ports:
-      - "8000:80"
+      - "80:80"
       - "443:443"
     volumes:
       - ./:/var/www
@@ -54,7 +54,6 @@ services:
     volumes:
       - dbdata:/var/lib/postgresql/data
     #   - ./POSTGRES/my.cnf:/etc/POSTGRES/conf.d
-
     networks:
       - app-network
 

@@ -22,7 +22,7 @@ class PostController extends Controller
             $posts = Post::offset($request->item)->paginate(10);
             return PostResource::collection($posts);
         }
-        
+
         $posts = Post::offset($request->item)->limit(10)->get();
 
         return PostResource::collection($posts);
@@ -65,7 +65,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return new PostResource($post);
+        return new PostResource($post->load('postContents'));
     }
 
     /**

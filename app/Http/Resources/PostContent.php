@@ -15,6 +15,7 @@ class PostContent extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->id,
             'file_name' => $this->file_name,
             'file_type' => $this->file_type,
         ];
